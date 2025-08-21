@@ -1,0 +1,17 @@
+# https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md
+
+customCommands:
+  - command: git cz
+    context: files
+    key: C
+    output: terminal
+gui:
+  language: "ja"
+  showIcons: true
+git:
+  branchLogCmd: "git log --decorate --color --graph --tags --remotes --all --stat --pretty='==============================================================%n %C(red)%h (%H)%n %C(magenta)%ad  %C(green)%an%n %C(blue)%s%n    %C(blue)%b%C(reset)'"
+  paging:
+    colorArg: always
+    pager: delta --dark --paging=never
+  allBranchesLogCmds:
+    - git log  --decorate --color --graph --tags --remotes --all --stat --pretty='==============================================================%n %C(red)%h (%H)%n %C(magenta)%ad  %C(green)%an%n %C(blue)%s%n    %C(blue)%b%C(reset)''
