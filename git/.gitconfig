@@ -1,0 +1,39 @@
+[user]
+  name = kenshikuroki
+  email = k-kuroki-e23@eagle.sophia.ac.jp
+[credential "https://github.com"]
+	helper =
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper =
+	helper = !/usr/bin/gh auth git-credential
+[core]
+  editor = emacs -nw
+  pager = delta
+  excludesfile = $HOME/.gitignore_global
+[color]
+  ui = auto
+[init]
+  defaultBranch = main
+[delta]
+  navigate = true
+  side-by-side = true
+  line-numbers = true
+  diff-so-fancy=true
+[interactive]
+  diffFilter = delta --color-only
+[merge]
+  conflictstyle = zdiff3
+[alias]
+  l = log --decorate --color --graph --tags --remotes --all --date=short --pretty='%C(red)%h  %C(magenta)%ad  %C(green)%an  %C(blue)%s%C(reset)'
+  ll = log --decorate --color --graph --tags --remotes --all --stat --pretty='==============================================================%n %C(red)%h (%H)%n %C(magenta)%ad  %C(green)%an%n %C(blue)%s%n    %C(blue)%b%C(reset)'
+  s = status -sb
+  d = diff
+  a = add
+  c = commit
+  p = push
+  pl = pull
+  br = branch
+  co = checkout
+  sh = stash
+  alias = !git config --get-regexp alias | sed 's/^alias.//g' | sed 's/ / = /1'

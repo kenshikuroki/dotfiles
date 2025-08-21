@@ -1,0 +1,19 @@
+# WSL
+*Zone.Identifier
+
+# log, temporary files, etc.
+*.log
+*.tmp
+*.temp
+
+# object files
+*.o
+*.d
+*.a
+*.so
+*.dll
+*.exe
+*.out
+
+# Emacs backup files
+*~
