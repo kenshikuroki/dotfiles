@@ -2,9 +2,10 @@
 set -euo pipefail
 
 DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
-mkdir -p "$DOTFILES_DIR/backup"
 PACKAGES_DIR="$DOTFILES_DIR/packages"
 BACKUP_DIR="$DOTFILES_DIR/backup/$(date +%Y%m%d_%H%M%S)"
+mkdir -p "$DOTFILES_DIR/backup"
+mkdir -p "$BACKUP_DIR"
 LOG_FILE="$DOTFILES_DIR/backup/$(date +%Y%m%d_%H%M%S).log"
 # ログ関数
 log() {
@@ -216,10 +217,6 @@ declare -A symlink_targets=(
 )
 
 symlink_backup() {
-  log "--- Creating backup directory: $BACKUP_DIR"
-  if ! mkdir -p "$BACKUP_DIR"; then
-    error "Failed to create backup directory: $BACKUP_DIR"
-  fi
   for name in "${!symlink_targets[@]}"; do
     local src="$HOME/$name"
     if [[ -L "$src" ]]; then
@@ -250,7 +247,6 @@ symlink_backup() {
 }
 
 symlink_create() {
-  log "--- Creating symlinks..."
   for name in "${!symlink_targets[@]}"; do
     local link_path="$HOME/$name"
     local target_path="${symlink_targets[$name]}"
