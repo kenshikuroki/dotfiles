@@ -1,0 +1,213 @@
+# ~/.config/starship.toml
+#  参考: https://starship.rs/config/
+
+format = """$status$cmd_duration$line_break\
+  $hostname$username$os${custom.bash}${custom.zsh}[](fg:#3e537c bg:#394260)\
+  $docker_context$container$directory[](fg:#394260 bg:#2a3245)\
+  $git_branch$git_commit$git_state$git_status$git_metrics[](fg:#2a3245 bg:#1d2230)\
+  $c$cpp$cmake$golang$java$julia$lua$mojo$nim$ocaml$odin$perl$php$python$rlang$raku$ruby$rust$scala$solidity$swift$vlang$zig[](fg:#1d2230)$line_break\
+  $sudo$jobs$character"""
+right_format = """$time"""
+add_newline = false
+follow_symlinks = false
+
+[status]
+  map_symbol = true
+  failure_style = 'red'
+  disabled = false
+[cmd_duration]
+  style = 'blue'
+  format = '[$duration ]($style)'
+
+[hostname]
+  ssh_only = true
+  style = 'bold fg:#c3c6cf bg:#3e537c'
+  format = '[ 󰇅 $hostname]($style)'
+[username]
+  style_root = 'bold red bg:#3e537c'
+  style_user = 'bold fg:#c3c6cf bg:#3e537c'
+  format = '[  $user]($style)'
+  disabled = true
+[os.symbols]
+  CentOS = ""
+  Ubuntu = ""
+[os]
+  style = 'fg:#c3c6cf bg:#3e537c'
+  format ='[ $symbol $version]($style)'
+  disabled = false
+[custom.bash]
+  command = "bash --version | head -n 1 | grep -oE '[0-9]+\\.[0-9]+'"
+  when = '[[ "$SHELL" == */bash ]]'
+  symbol = ''
+  style = 'fg:#c3c6cf bg:#3e537c'
+  format = '[ $symbol bash$output]($style)'
+[custom.zsh]
+  command = "zsh --version | head -n 1 | grep -oE '[0-9]+\\.[0-9]+'"
+  when = '[[ "$SHELL" == */zsh ]]'
+  symbol = ''
+  style = 'fg:#c3c6cf bg:#3e537c'
+  format = '[ $symbol zsh$output]($style)'
+
+[container]
+  style = 'bold red dimmed bg:#394260'
+  format = '[ $symbol \[$name\] ]($style)'
+[directory]
+  truncation_length = 7
+  truncation_symbol = '.../'
+  style = 'bold fg:#79baec bg:#394260'
+  read_only = 'Read Only'
+  read_only_style = 'bold red bg:#394260'
+  format = '[  $path]($style)[ $read_only]($read_only_style)'
+
+[git_branch]
+  style = 'bold purple bg:#2a3245'
+  format = '[ $symbol$branch(:$remote_branch) ]($style)'
+[git_commit]
+  style = 'bold white bg:#2a3245'
+  format = '[ \($hash$tag\) ]($style)'
+[git_state]
+  style = 'bold yellow bg:#2a3245'
+  format = '\([$state( $progress_current/$progress_total) ] ($style)\)'
+[git_status]
+  style = 'bold red bg:#2a3245'
+  format = '([\[$all_status$ahead_behind\] ]($style))'
+[git_metrics]
+  added_style = 'bold red bg:#2a3245'
+  deleted_style = 'bold red bg:#2a3245'
+  format = '([+$added ]($added_style))([-$deleted ]($deleted_style))'
+  disabled = false
+
+[c]
+  symbol = ''
+  version_format = '${raw}'
+  style = 'fg:#60677f bg:#1d2230'
+  format = '[ $symbol $version]($style)'
+  disabled = true
+[cpp]
+  symbol = ''
+  version_format = '${raw}'
+  style = 'fg:#60677f bg:#1d2230'
+  format = '[ $symbol $version]($style)'
+  disabled = false
+[cmake]
+  symbol = '󰔶'
+  version_format = '${raw}'
+  style = 'fg:#60677f bg:#1d2230'
+  format = '[ $symbol $version]($style)'
+[golang]
+  symbol = ''
+  version_format = '${raw}'
+  style = 'fg:#60677f bg:#1d2230'
+  format = '[ $symbol $version]($style)'
+[java]
+  symbol = ''
+  version_format = '${raw}'
+  style = 'fg:#60677f bg:#1d2230'
+  format = '[ $symbol $version]($style)'
+[julia]
+  symbol = ''
+  version_format = '${raw}'
+  style = 'fg:#60677f bg:#1d2230'
+  format = '[ $symbol $version]($style)'
+[lua]
+  symbol = ''
+  version_format = '${raw}'
+  style = 'fg:#60677f bg:#1d2230'
+  format = '[ $symbol $version]($style)'
+[mojo]
+  symbol = '󰈸'
+  style = 'fg:#60677f bg:#1d2230'
+  format = '[ $symbol $version]($style)'
+[nim]
+  symbol = ''
+  version_format = '${raw}'
+  style = 'fg:#60677f bg:#1d2230'
+  format = '[ $symbol $version]($style)'
+[ocaml]
+  symbol = ''
+  version_format = '${raw}'
+  style = 'fg:#60677f bg:#1d2230'
+  format = '[ $symbol $version]($style)'
+[odin]
+  symbol = 'Ø'
+  style = 'fg:#60677f bg:#1d2230'
+  format = '[ $symbol $version]($style)'
+[perl]
+  symbol = ''
+  version_format = '${raw}'
+  style = 'fg:#60677f bg:#1d2230'
+  format = '[ $symbol $version]($style)'
+[php]
+  symbol = ''
+  version_format = '${raw}'
+  style = 'fg:#60677f bg:#1d2230'
+  format = '[ $symbol $version]($style)'
+[python]
+  symbol = ''
+  version_format = '${raw}'
+  style = 'fg:#60677f bg:#1d2230'
+  format = '[ $symbol $version]($style)'
+[rlang]
+  symbol = ''
+  version_format = '${raw}'
+  style = 'fg:#60677f bg:#1d2230'
+  format = '[ $symbol $version]($style)'
+[raku]
+  symbol = ''
+  version_format = '${raw}'
+  style = 'fg:#60677f bg:#1d2230'
+  format = '[ $symbol $version]($style)'
+[ruby]
+  symbol = ''
+  version_format = '${raw}'
+  style = 'fg:#60677f bg:#1d2230'
+  format = '[ $symbol $version]($style)'
+[rust]
+  symbol = ''
+  version_format = '${raw}'
+  style = 'fg:#60677f bg:#1d2230'
+  format = '[ $symbol $version]($style)'
+[scala]
+  symbol = ''
+  version_format = '${raw}'
+  style = 'fg:#60677f bg:#1d2230'
+  format = '[ $symbol $version]($style)'
+[solidity]
+  symbol = 'S'
+  version_format = '${raw}'
+  style = 'fg:#60677f bg:#1d2230'
+  format = '[ $symbol $version]($style)'
+[swift]
+  symbol = ''
+  version_format = '${raw}'
+  style = 'fg:#60677f bg:#1d2230'
+  format = '[ $symbol $version]($style)'
+[vlang]
+  symbol = ''
+  version_format = '${raw}'
+  style = 'fg:#60677f bg:#1d2230'
+  format = '[ $symbol $version]($style)'
+[zig]
+  symbol = ''
+  version_format = '${raw}'
+  style = 'fg:#60677f bg:#1d2230'
+  format = '[ $symbol $version]($style)'
+
+[sudo]
+  style = 'red'
+  format = '[sudo ]($style)'
+  disabled = false
+[jobs]
+  symbol = '+'
+  style = 'bold blue'
+  format = '[$symbol$number ]($style)'
+  disabled = false
+[character]
+  success_symbol = '[❯ ](bold blue)'
+  error_symbol = '[❯ ](bold blue)'
+  format = '$symbol'
+
+[time]
+  style = 'fg:#394260'
+  format = '[  $time]($style)'
+  disabled = false
