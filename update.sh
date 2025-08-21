@@ -169,6 +169,8 @@ update_apt_packages() {
   fi
   if ! sudo apt upgrade -y; then
     error "Failed to upgrade apt packages"
+  else
+    success "Apt packages updated"
   fi
 }
 
@@ -298,7 +300,7 @@ update_binary_tools() {
     IFS="|" read -r name _ _ _ <<< "$entry"
     process_binary_tool "$name"
   done
-  success "Binary tools update completed"
+  success "Binary tools updated"
 }
 
 # --- クリーンアップ ---
