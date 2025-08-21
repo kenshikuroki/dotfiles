@@ -1,0 +1,33 @@
+# ssh_config
+
+Host neumann
+  Hostname neumann.sn.sophia.ac.jp
+  User kuroki
+  ForwardX11 yes
+  ForwardX11Trusted yes
+  XAuthLocation /usr/bin/xauth
+  LogLevel QUIET
+
+Host landau
+  Hostname landau.sn.sophia.ac.jp
+  User kuroki
+  ForwardX11 yes
+  ForwardX11Trusted yes
+  XAuthLocation /usr/bin/xauth
+  LogLevel QUIET
+
+Host noether
+  Hostname noether.sn.sophia.ac.jp
+  User kuroki
+  ForwardX11 yes
+  ForwardX11Trusted yes
+  XAuthLocation /usr/bin/xauth
+  LogLevel QUIET
+
+Host bessel
+  Hostname bessel.sn.sophia.ac.jp
+  User kuroki
+  ForwardX11 yes
+  ForwardX11Trusted yes
+  XAuthLocation /usr/bin/xauth
+  LogLevel QUIET
