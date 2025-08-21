@@ -71,62 +71,39 @@ mkdir -p "$ZSH_PLUGIN_DIR"
 
 # zsh-completions
 ZSH_COMPLETIONS_DIR="$ZSH_PLUGIN_DIR/zsh-completions"
-if [ ! -d "$ZSH_COMPLETIONS_DIR" ]; then
-  git clone https://github.com/zsh-users/zsh-completions "$ZSH_COMPLETIONS_DIR"
-fi
 fpath+="$ZSH_COMPLETIONS_DIR/src"
 
 autoload -Uz compinit
 compinit
 
 # zsh completion using fzf
-if [ ! -f ~/.local/fzf-tab-completion/zsh/fzf-zsh-completion.sh ]; then
-  git clone https://github.com/lincheney/fzf-tab-completion.git ~/.local/fzf-tab-completion
-  cd ~/.local/fzf-tab-completion || exit
-  rm -f .git
-  cd ~ || exit
-fi
-source ~/.local/fzf-tab-completion/zsh/fzf-zsh-completion.sh
+local FZF_TAB_COMPLETION_DIR="$ZSH_PLUGIN_DIR/fzf-tab-completion"
+source "$FZF_TAB_COMPLETION_DIR/zsh/fzf-zsh-completion.sh"
 export FZF_COMPLETION_AUTO_COMMON_PREFIX=true
 export FZF_COMPLETION_AUTO_COMMON_PREFIX_PART=true
 bindkey '^I' fzf_completion
 
 # zsh-ssh
 ZSH_SSH_DIR="$ZSH_PLUGIN_DIR/zsh-ssh"
-if [ ! -d "$ZSH_SSH_DIR" ]; then
-  git clone https://github.com/sunlei/zsh-ssh "$ZSH_SSH_DIR"
-fi
 source "$ZSH_SSH_DIR/zsh-ssh.zsh"
 
 # zsh-autosuggestions
 ZSH_AUTOSUGGESTIONS_DIR="$ZSH_PLUGIN_DIR/zsh-autosuggestions"
-if [ ! -d "$ZSH_AUTOSUGGESTIONS_DIR" ]; then
-  git clone https://github.com/zsh-users/zsh-autosuggestions "$ZSH_AUTOSUGGESTIONS_DIR"
-fi
 source "$ZSH_AUTOSUGGESTIONS_DIR/zsh-autosuggestions.zsh"
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 
 # zsh-syntax-highlighting
 #ZSH_HIGHLIGHT_DIR="$ZSH_PLUGIN_DIR/zsh-syntax-highlighting"
-#if [ ! -d "$ZSH_HIGHLIGHT_DIR" ]; then
-#  git clone https://github.com/zsh-users/zsh-syntax-highlighting "$ZSH_HIGHLIGHT_DIR"
-#fi
 #source "$ZSH_HIGHLIGHT_DIR/zsh-syntax-highlighting.zsh"
 #ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets pattern)
 
 # fast-syntax-highlighting
 FAST_HIGHLIGHTING_DIR="$ZSH_PLUGIN_DIR/fast-syntax-highlighting"
-if [ ! -d "$FAST_HIGHLIGHTING_DIR" ]; then
-  git clone https://github.com/zdharma-continuum/fast-syntax-highlighting "$FAST_HIGHLIGHTING_DIR"
-fi
 source "$FAST_HIGHLIGHTING_DIR/fast-syntax-highlighting.plugin.zsh"
 
 # print-alias
 PRINT_ALIAS_DIR="$ZSH_PLUGIN_DIR/print-alias"
-if [ ! -d "$PRINT_ALIAS_DIR" ]; then
-  git clone https://github.com/brymck/print-alias "$PRINT_ALIAS_DIR"
-fi
 source "$PRINT_ALIAS_DIR/print-alias.plugin.zsh"
 export PRINT_ALIAS_PREFIX=$'\e[1;32m  ╰─> \e[0m'
 export PRINT_ALIAS_FORMAT=$'\e[32m'
@@ -135,10 +112,6 @@ export PRINT_ALIAS_IGNORE_REDEFINED_COMMANDS=false
 
 # dirhistory plugin (Oh My Zsh)
 DIRHISTORY_PLUGIN_DIR="$ZSH_PLUGIN_DIR/dirhistory"
-if [ ! -d "$DIRHISTORY_PLUGIN_DIR" ]; then
-  mkdir -p "$DIRHISTORY_PLUGIN_DIR"
-  curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/dirhistory/dirhistory.plugin.zsh -o "$DIRHISTORY_PLUGIN_DIR/dirhistory.plugin.zsh"
-fi
 source "$DIRHISTORY_PLUGIN_DIR/dirhistory.plugin.zsh"
 # オリジナルの関数をラップして出力と履歴記録を追加
 function dirhistory_back_enhanced() {

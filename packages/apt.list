@@ -1,0 +1,96 @@
+# System utilities
+base-files
+bash
+binutils
+bsdutils
+coreutils
+curl
+dash
+debianutils
+diffutils
+findutils
+grep
+gzip
+hostname
+init
+login
+ncurses-base
+ncurses-bin
+util-linux
+unzip
+zip
+rar
+unrar
+
+# Development tools
+build-essential
+cmake
+g++
+gcc
+gdb
+git
+pkg-config
+dpkg-dev
+
+# Libraries
+libattr1
+libclhep-dev
+libgif-dev
+libgsl-dev
+libssl-dev
+libtbb-dev
+libvdt-dev
+libx11-dev
+libxext-dev
+libxft-dev
+libxpm-dev
+
+# System monitoring
+htop
+
+# Text processing and utilities
+jq
+emacs
+
+# GitHub CLI
+gh
+
+# Graphics and document viewers
+eog
+evince
+x11-apps
+x11-utils
+x11-xkb-utils
+x11-xserver-utils
+
+# Node.js and npm
+nodejs
+npm
+
+# Python
+python3
+python3-pip
+python3-update-manager
+
+# LaTeX
+texlive-fonts-recommended
+texlive-full
+texlive-latex-base
+texlive-latex-extra
+texlive-latex-recommended
+
+# Scientific tools
+gnuplot
+
+# System packages
+language-pack-ja
+ubuntu-minimal
+ubuntu-wsl
+unattended-upgrades
+snapd
+
+# Shell
+zsh
+
+# Entertainment
+cmatrix
