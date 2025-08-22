@@ -1,34 +1,42 @@
 #!/bin/bash
-# ~/.profile: executed by the command interpreter for login shells.
-# This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
-# exists.
-# see /usr/share/doc/bash/examples/startup-files for examples.
-# the files are located in the bash-doc package.
-
-# the default umask is set in /etc/profile; for setting the umask
-# for ssh logins, install and configure the libpam-umask package.
-#umask 022
 
 # Run zsh
+echo "上智のサーバーはbashでしかログインできないため、.profileからexec zsh --loginを実行してzshに切り替えている。"
+echo "bashにログインするには、.profile中のexec zsh --loginをコメントアウトしてからexec bash --loginを実行。"
 exec zsh --login
 
-# if running bash
-if [ -n "$BASH_VERSION" ]; then
-  # include .bashrc if it exists
-  if [ -f "$HOME/.bashrc" ]; then
-    . "$HOME/.bashrc"
-  fi
+# export PATH
+if [[ "$PATH" != *"$HOME/.local/bin"* ]]; then
+  export PATH="$HOME/.local/bin:$PATH"
 fi
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ]; then
-  PATH="$HOME/bin:$PATH"
+# colored GCC warnings and errors
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+# pagerをbatで
+#export PAGER="bat"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
+#==================================================================================
+# 日本語化
+export LC_ALL=ja_JP.UTF-8
+
+#==================================================================================
+# WSL2専用: XLaunch(VcXsrv)
+if grep -qiE 'microsoft|wsl' /proc/version 2>/dev/null; then
+#  if ! tasklist.exe | grep -q vcxsrv.exe; then
+#    "/mnt/c/Program Files/VcXsrv/xlaunch.exe" -run "$HOME/.VcXsrv/config.xlaunch" \
+#      >/dev/null 2>&1 &
+#  fi
+  export LIBGL_ALWAYS_INDIRECT=1
+  export GNUTERM=x11
 fi
 
-# set PATH so it includes user's private bin if it exists
-#if [ -d "$HOME/.local/bin" ] ; then
-#    PATH="$HOME/.local/bin:$PATH"
-#fi
-#export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0.0
+#==================================================================================
+# 対話的ログインシェルなら ~/.bashrc も読む
+if [[ $- == *i* ]]; then
+  [[ -f $HOME/.bashrc ]] && source $HOME/.bashrc
+fi
 
+#==================================================================================
 fastfetch

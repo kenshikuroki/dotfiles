@@ -1,6 +1,6 @@
 #!/bin/bash
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# シェルガード
+[ -n "$BASH_VERSION" ] || return
 
 # If not running interactively, don't do anything
 case $- in
@@ -8,18 +8,25 @@ case $- in
 *) return ;;
 esac
 
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
+# $SHELLの設定
+if [ -x "$HOME/.local/bin/bash" ]; then
+  export SHELL="$HOME/.local/bin/bash"
+else
+  export SHELL="/bin/bash"
+fi
 
 # enable color support
 if [ -x /usr/bin/dircolors ]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
 
-# colored GCC warnings and errors
-export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
+#==================================================================================
+# shell options of bash
+shopt -s checkwinsize
+shopt -s autocd
+shopt -s cdspell
+shopt -s histappend
+shopt -s expand_aliases
 # enable programmable completion features
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
@@ -29,44 +36,13 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# pagerをbatで
-#export PAGER="bat"
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-
-#==================================================================================
-# shell options of bash
-shopt -s autocd
-shopt -s cdspell
-shopt -s histappend
-shopt -s expand_aliases
-
-#==================================================================================
-# PATHを通す
-if [[ ":$PATH:" != *":$HOME/.local/bin:"* ]]; then
-  if [ -d "$HOME/.local/bin" ]; then
-    PATH="$HOME/.local/bin:$PATH"
-  fi
-fi
-
-#==================================================================================
-# 日本語化
-export LC_ALL=ja_JP.UTF-8
-
-#==================================================================================
-# XLaunch(VcXsrv)
-if ! tasklist.exe | grep vcxsrv.exe >/dev/null; then
-  "/mnt/c/Program Files/VcXsrv/xlaunch.exe" -run "$HOME/.VcXsrv/config.xlaunch" \
-    >/dev/null 2>&1 &
-fi
-#export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0.0
-export LIBGL_ALWAYS_INDIRECT=1
-export GNUTERM=x11
-
 #==================================================================================
 # prompt
+export STARSHIP_CONFIG="$HOME/.config/starship.toml"
 eval "$(starship init bash)"
+trap 'echo -e "\n\033[31m⚠️ Command cancelled by Ctrl-C.\033[0m"' INT
 
-#==================================================================================
+#===================================================================================
 # fuzzy finder (fzf)
 export FZF_DEFAULT_COMMAND='fd --type f --follow -I --exclude .git'
 export FZF_DEFAULT_OPTS="--exit-0 --height 50% --border --preview-window=right:50% \
@@ -79,28 +55,30 @@ export FZF_ALT_C_OPTS="--preview 'eza -T -L 1 --icons --color=always {}'"
 export FZF_COMPLETION_OPTS='--border=none --style=minimal --info=hidden'
 eval "$(fzf --bash)"
 
+#==================================================================================
+# プラグイン
+
 # bash completion using fzf
-if [ ! -f ~/.local/fzf-tab-completion/bash/fzf-bash-completion.sh ]; then
-  git clone https://github.com/lincheney/fzf-tab-completion.git ~/.local/fzf-tab-completion
-  cd ~/.local/fzf-tab-completion || exit
-  rm -f .git
-  cd ~ || exit
+if [ ! -f $HOME/.local/fzf-tab-completion/bash/fzf-bash-completion.sh ]; then
+  git clone https://github.com/lincheney/fzf-tab-completion.git $HOME/.local/fzf-tab-completion
+  \rm -rf "$HOME/.local/fzf-tab-completion/.git"
   echo -e "\033[31mRewrite ~/.local/fzf-tab-completion/bash/fzf-bash-completion.sh : ps -> \ps and cat -> \cat\033[0m"
 fi
 #shellcheck source=https://github.com/lincheney/fzf-tab-completion/blob/master/bash/fzf-bash-completion.sh
-source ~/.local/fzf-tab-completion/bash/fzf-bash-completion.sh
+source $HOME/.local/fzf-tab-completion/bash/fzf-bash-completion.sh
 export FZF_COMPLETION_AUTO_COMMON_PREFIX=true
 export FZF_COMPLETION_AUTO_COMMON_PREFIX_PART=true
 bind -x '"\t": fzf_bash_completion'
 
 #==================================================================================
 # history setting
-export HISTTIMEFORMAT='%F  %T  '
-export HISTSIZE=10000
-export HISTFILESIZE=50000
-export HISTIGNORE='exit:clear:reset:h:history:fk9:ps:jobs:top:du:df:free:pwd:zi:eza:l:ls:la:ll:lt:tree:f:fcd:fdat:flog:ferr:fpng:fpdf:frg'
-export HISTCONTROL=ignoreboth:erasedups:ignoredups:ignorespace
-export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+HISTFILE=~/.bash_history
+HISTSIZE=10000
+HISTFILESIZE=50000
+HISTTIMEFORMAT='%F  %T  '
+HISTCONTROL=ignoreboth:erasedups:ignoredups:ignorespace
+HISTIGNORE='exit:clear:reset:h:history:fk9:ps:jobs:top:du:df:free:pwd:zi:eza:l:ls:la:ll:lt:tree:f:fcd:fdat:flog:ferr:fpng:fpdf:frg'
 function h() {
   local query="${1:-}"
   local selected
@@ -128,10 +106,11 @@ bind -x '"\C-r": "h"'
 #==================================================================================
 # Others
 
-alias open='explorer.exe .'
-alias clip='clip.exe'
-
-alias aptupd='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y'
+if grep -qiE 'microsoft|wsl' /proc/version 2>/dev/null; then
+  alias open='explorer.exe .'
+  alias clip='clip.exe'
+  alias aptupd='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y'
+fi
 
 function help() {
   if [ "$#" -eq 0 ]; then
@@ -143,7 +122,7 @@ function help() {
 
 alias htop='htop -t -u $USER'
 alias top='htop'
-alias ps='ps au | (head -n 1 && ps au | tail -n +2 | rg $USER | rg --invert-match "ps au|tail|rg|-bash|vscode|dbus")'
+alias ps='ps au | (head -n 1 && ps au | tail -n +2 | rg $USER | rg --invert-match "ps au|tail|rg|-bash|zsh|vscode|dbus")'
 alias k9='kill -9'
 function fk9() {
   local query="${1:-}"
@@ -162,15 +141,7 @@ alias chmod='chmod -v'
 alias chown='chown --verbose'
 alias chgrp='chgrp --verbose'
 
-function back(){
-  local target
-  target=$(cd - || exit)
-  if [ -n "$target" ]; then
-    echo -e "\033[32m❯\033[0m cd $target"
-    cd "$target" || return 1
-    history -s "cd $target"
-  fi
-}
+alias cds='dirs -v; echo -n "select number: "; read newdir; cd +"$newdir"'
 alias ..='cd ..'
 alias .1='cd ..'
 alias .2='cd ../..'
@@ -184,17 +155,17 @@ function fcd() {
   if [ -n "$selected" ]; then
     echo -e "\033[32m❯\033[0m cd $selected"
     cd "$selected" || return 1
-    history -s "cd $selected"
+    print -s "cd $selected"
   fi
 }
-eval "$(zoxide init bash --hook pwd)"
+eval "$(zoxide init bash)"
 function zi_1() {
   local selected
   selected=$(zoxide query -l | fzf --reverse --preview "eza -T -L 1 --icons --color=always {}")
   if [ -n "$selected" ]; then
     echo -e "\033[32m❯\033[0m cd $selected"
     cd "$selected" || return 1
-    history -s "cd $selected"
+    print -s "cd $selected"
   fi
 }
 alias zi='zi_1'
@@ -222,7 +193,7 @@ function unrm() {
     while IFS= read -r file; do
       echo -e "\033[32m❯\033[0m rip -u $file"
       rip -u "$file"
-      history -s "rip -u $file"
+      print -s "rip -u $file"
     done <<<"$selected"
   fi
 }
@@ -260,10 +231,10 @@ function f() {
   if [ -d "$result" ]; then
     echo -e "\033[34m$result\033[0m"
     ls "$result"
-    history -s "eza $result"
+    print -s "eza $result"
   elif [ -f "$result" ]; then
     less "$result"
-    history -s "less $result"
+    print -s "less $result"
   else
     echo "$result"
   fi
@@ -275,7 +246,7 @@ function fdat() {
   if [ -n "$selected" ]; then
     echo -e "\033[32m❯\033[0m less $selected"
     less "$selected"
-    history -s "less $selected"
+    print -s "less $selected"
   fi
 }
 function flog() {
@@ -285,7 +256,7 @@ function flog() {
   if [ -n "$selected" ]; then
     echo -e "\033[32m❯\033[0m less $selected"
     less "$selected"
-    history -s "less $selected"
+    print -s "less $selected"
   fi
 }
 function ferr() {
@@ -295,7 +266,7 @@ function ferr() {
   if [ -n "$selected" ]; then
     echo -e "\033[32m❯\033[0m less $selected"
     less "$selected"
-    history -s "less $selected"
+    print -s "less $selected"
   fi
 }
 alias eog='eog &>/dev/null'
@@ -307,7 +278,7 @@ function fpng() {
     while IFS= read -r file; do
       echo -e "\033[32m❯\033[0m eog $file &"
       eog "$file" &
-      history -s "eog $file &"
+      print -s "eog $file &"
     done <<<"$selected"
   fi
 }
@@ -319,7 +290,7 @@ function fpdf() {
     while IFS= read -r file; do
       echo -e "\033[32m❯\033[0m evince $file &"
       evince "$file" &
-      history -s "evince $file &"
+      print -s "evince $file &"
     done <<<"$selected"
   fi
 }
@@ -330,17 +301,16 @@ alias egrep='rg --extended-regexp --color=auto'
 export HGREP_DEFAULT_OPTS='--theme "Visual Studio Dark+"'
 alias hrg='hgrep'
 function frg() {
-  local rg_cmd="rg --smart-case --line-number --color=always --trim"
   local pattern="${1:-.}"
-  local selected prev_filepath="" filepath line_number line_content
-  selected=$($rg_cmd "$pattern" | FZF_DEFAULT_COMMAND=":" \
-    fzf --bind="change:top+reload($rg_cmd {q} || true)" \
-    --reverse -m \
-    --ansi --phony \
-    --delimiter=":")
+  local selected prev_filepath filepath line_number line_content
+  selected=$(fzf --bind="change:top+reload:rg --smart-case --line-number --color=always --trim {q} || true" \
+                  --reverse -m \
+                  --ansi --phony \
+                  --delimiter=":" \
+                  --prompt="RG> ")
   if [[ -n "$selected" ]]; then
     while IFS= read -r item; do
-      filepath=$(echo "$item" | cut -d: -f1)
+      filepath=${item%%:*}
       line_number=$(echo "$item" | cut -d: -f2)
       line_content=$(echo "$item" | cut -d: -f3-)
       if [[ "$filepath" != "$prev_filepath" ]]; then
@@ -369,14 +339,8 @@ function e() {
 }
 
 # git
-if [ ! -f ~/.git-completion.sh ]; then
-  curl -o .git-completion.sh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash >/dev/null 2>&1
-fi
-#shellcheck source=https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
-source ~/.git-completion.sh
 alias g='git'
-alias gs='git status'
-alias ga='git add'
+alias lg='lazygit'
 function fga() {
   addfiles=$(git status --short |
     awk '{if (substr($0,2,1) !~ / /) print $2}' |
@@ -385,36 +349,14 @@ function fga() {
     while IFS= read -r file; do
       echo -e "\033[32m❯\033[0m git add $file"
       git add "$file"
-      history -s "git add $file"
+      print -s "git add $file"
     done <<<"$addfiles"
   fi
 }
-alias gc='git commit'
-alias gp='git push'
-alias gl='git log --decorate --color --graph --all --name-status --date=short \
---pretty=format:"%C(red)%h%C(yellow)%d%n%C(magenta)%ad %C(green)%an%n%C(blue)%s %C(reset)"'
-alias gd='git diff'
+alias proot='cd $(git rev-parse --show-toplevel)'
 
-# ssh & sftp
-function ssh_connect() {
-  ssh -l kuroki -Y $1.sn.sophia.ac.jp
-}
-alias neumann='ssh_connect neumann'
-alias bessel='ssh_connect bessel'
-alias noether='ssh_connect noether'
-alias landau='ssh_connect landau'
-function sftp() {
-  local servers=("landau" "neumann" "bessel" "noether")
-  local server_found=false
-  for server in "${servers[@]}"; do
-    if [[ "$server" == "$1" ]]; then
-      server_found=true
-      break
-    fi
-  done
-  if [ "$server_found" = true ]; then
-    command sftp kuroki@$1.sn.sophia.ac.jp
-  else
-    command sftp "$@"
-  fi
-}
+# ssh
+alias neumann='ssh neumann'
+alias landau='ssh landau'
+alias noether='ssh noether'
+alias bessel='ssh bessel'
