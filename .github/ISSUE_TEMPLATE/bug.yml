@@ -4,56 +4,56 @@ title: ""
 labels: [bug]
 assignees: []
 body:
-	- type: textarea
-		id: summary
-		attributes:
-			label: 概要 (Abstract)
-			description: バグの簡単な説明
-			placeholder: "〇〇が起こる"
-			value: ""
-		validations:
-			required: true
-	- type: textarea
-		id: steps
-		attributes:
-			label: 再現手順
-			description: バグの再現手順
-			placeholder: |
-				1. ...
-				2. ...
-			value: ""
-		validations:
-			required: false
-	- type: textarea
-		id: expected
-		attributes:
-			label: 期待される動作
-			description: 本来どうなるべきか
-			placeholder: ""
-			value: ""
-		validations:
-			required: false
-	- type: textarea
-		id: actual
-		attributes:
-			label: 実際の動作
-			description: 実際に発生した動作やエラーメッセージ
-			placeholder: ""
-			value: ""
-		validations:
-			required: false
-	- type: textarea
-		id: environment
-		attributes:
-			label: 環境情報
-			description: OSやバージョン、利用しているツールなど
-			placeholder: |
-				- OS: (例: Ubuntu 22.04)
-				- シェル: (例: bash)
-				- その他: ...
-			value: ""
-		validations:
-			required: false
+  - type: textarea
+    id: summary
+    attributes:
+      label: 概要
+      description: バグの簡単な説明
+      placeholder: "〇〇が起こる"
+      value: ""
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 再現手順
+      description: バグの再現手順
+      placeholder: |
+        1. ...
+        2. ...
+      value: ""
+    validations:
+      required: false
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期待される動作
+      description: 本来どうなるべきか
+      placeholder: ""
+      value: ""
+    validations:
+      required: false
+  - type: textarea
+    id: actual
+    attributes:
+      label: 実際の動作
+      description: 実際に発生した動作やエラーメッセージ
+      placeholder: ""
+      value: ""
+    validations:
+      required: false
+  - type: textarea
+    id: environment
+    attributes:
+      label: 環境情報
+      description: OSやバージョン、利用しているツールなど
+      placeholder: |
+        - OS: (例: Ubuntu 22.04)
+        - シェル: (例: bash)
+        - その他: ...
+      value: ""
+    validations:
+      required: false
   - type: textarea
     id: requirements
     attributes:
@@ -64,7 +64,7 @@ body:
     validations:
       required: false
   - type: textarea
-    id: related
+    id: related_src
     attributes:
       label: 関連ソース（Related src）
       description: 関連するソースコードやファイル
@@ -81,21 +81,21 @@ body:
       value: ""
     validations:
       required: false
-	- type: textarea
-		id: related
-		attributes:
-			label: 参考情報
-			description: 参考になりそうな情報
-			placeholder: ""
-			value: ""
-		validations:
-			required: false
-	- type: textarea
-		id: others
-		attributes:
-			label: その他・備考
-			description: その他、補足事項や備考
-			placeholder: ""
-			value: ""
-		validations:
-			required: false
+  - type: textarea
+    id: reference
+    attributes:
+      label: 参考情報
+      description: 参考になりそうな情報
+      placeholder: ""
+      value: ""
+    validations:
+      required: false
+  - type: textarea
+    id: others
+    attributes:
+      label: その他・備考
+      description: その他、補足事項や備考
+      placeholder: ""
+      value: ""
+    validations:
+      required: false

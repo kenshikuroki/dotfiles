@@ -5,7 +5,7 @@ labels: []
 assignees: []
 body:
   - type: textarea
-    id: as-is
+    id: as_is
     attributes:
       label: 現状（As is）
       description: 対応しないことで発生する課題
@@ -14,7 +14,7 @@ body:
     validations:
       required: true
   - type: textarea
-    id: to-be
+    id: to_be
     attributes:
       label: 理想（To be）
       description: タスク完了条件
