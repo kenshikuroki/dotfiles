@@ -1,11 +1,11 @@
 name: Generic
 description: 汎用的なIssueテンプレート
-title: "[GENERIC] "
-labels: ["generic"]
+title: ""
+labels: []
 assignees: []
 body:
   - type: textarea
-    id: as_is
+    id: as-is
     attributes:
       label: 現状（As is）
       description: 対応しないことで発生する課題
@@ -14,7 +14,7 @@ body:
     validations:
       required: true
   - type: textarea
-    id: to_be
+    id: to-be
     attributes:
       label: 理想（To be）
       description: タスク完了条件

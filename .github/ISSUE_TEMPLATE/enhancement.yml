@@ -1,6 +1,6 @@
 name: Enhancement
 description: 機能追加・改善用テンプレート
-title: "[Enhancement] "
+title: " "
 labels: [enhancement]
 assignees: []
 body:
@@ -23,7 +23,7 @@ body:
     validations:
       required: true
   - type: textarea
-    id: tobe
+    id: to-be
     attributes:
       label: 理想（To be）
       description: 実現したい理想の状態やゴール
@@ -41,7 +41,7 @@ body:
     validations:
       required: false
   - type: textarea
-    id: related
+    id: related-src
     attributes:
       label: 関連ソース（Related src）
       description: 関連するソースコードやファイル
