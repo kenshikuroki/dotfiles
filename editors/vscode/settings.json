@@ -1,0 +1,448 @@
+{
+  "security.workspace.trust.untrustedFiles": "open",
+  // ---- ターミナル及びプロファイルの設定 ----
+  "terminal.integrated.fontFamily": "HackGen35 Console NF Regular, 'Ubuntu Mono', monospace",
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.fontWeight": 300,
+  "terminal.integrated.fontWeightBold": 500,
+  "terminal.integrated.defaultProfile.linux": "bash",
+  "terminal.integrated.profiles.linux": {
+    "bash": {
+      "path": "/bin/bash",
+      "args": [
+        "-c",
+        "if [ -f ~/.bash_profile ]; then source ~/.bash_profile; elif [ -f ~/.profile ]; then source ~/.profile; fi; exec bash"
+      ]
+    },
+    "JavaScript Debug Terminal": null,
+  },
+  // ターミナルのスクロールバックのサイズを設定
+  "terminal.integrated.scrollback": 5000,
+  // ターミナルでの複数行貼り付けを警告しない
+  "terminal.integrated.enableMultiLinePasteWarning": "never",
+  // --------- SSH接続 ------------
+  "remote.SSH.remotePlatform": {
+    "landau": "linux",
+    "noether": "linux",
+    "bessel": "linux",
+    "neumann": "linux"
+  },
+  "remote.SSH.enableDynamicForwarding": true,
+  "remote.SSH.connectTimeout": 60,
+  "remote.SSH.maxReconnectionAttempts": 5,
+  "extensions.verifySignature": false,
+  // ---------- 全般 ----------
+  // 色をカスタマイズ
+  "workbench.colorCustomizations": {
+    // 参考: https://code.visualstudio.com/api/references/theme-color
+    "statusBarItem.remoteBackground": "#4e4e4e",
+    "statusBarItem.errorForeground": "#ffffff",
+    "statusBarItem.errorBackground": "#b100009c",
+    "statusBarItem.prominentForeground": "#ffffff",
+    "statusBarItem.prominentBackground": "#a68500e0",
+    "minimap.background": "#1f1f1f",
+    "minimap.foregroundOpacity": "#000000cc",
+    "minimap.infoHighlight": "#3794ff50",
+    "minimapSlider.background": "#797f8660",
+    "minimapSlider.activeBackground": "#797f86aa",
+    "minimapSlider.hoverBackground": "#797f86aa",
+    "editor.lineHighlightBackground": "#797f8624",
+    "editor.lineHighlightBorder": "#797f8624",
+    "editorBracketHighlight.foreground1": "#ffffff",
+    "editorBracketHighlight.foreground2": "#900000",
+    "editorBracketHighlight.foreground3": "#bd6800",
+    "editorBracketHighlight.foreground4": "#d2d200",
+    "editorBracketHighlight.foreground5": "#28a228",
+    "editorBracketHighlight.foreground6": "#2c57ad",
+    "panel.background": "#161821",
+    "terminal.ansiBlack": "#1e2132",
+    "terminal.ansiBlue": "#84a0c6",
+    "terminal.ansiBrightBlack": "#6b7089",
+    "terminal.ansiBrightBlue": "#91acd1",
+    "terminal.ansiBrightCyan": "#95c4ce",
+    "terminal.ansiBrightGreen": "#c0ca8e",
+    "terminal.ansiBrightMagenta": "#ada0d3",
+    "terminal.ansiBrightRed": "#e98989",
+    "terminal.ansiBrightWhite": "#d2d4de",
+    "terminal.ansiBrightYellow": "#e9b189",
+    "terminal.ansiCyan": "#89b8c2",
+    "terminal.ansiGreen": "#b4be82",
+    "terminal.ansiMagenta": "#a093c7",
+    "terminal.ansiRed": "#e27878",
+    "terminal.ansiWhite": "#c6c8d1",
+    "terminal.ansiYellow": "#e2a478",
+    "terminal.foreground": "#c6c8d1",
+    "terminal.selectionBackground": "#4a548266",
+    "terminalCommandDecoration.defaultBackground": "#6b7089",
+    "terminalCommandDecoration.errorBackground": "#e27878",
+    "terminalCommandDecoration.successBackground": "#84a0c6",
+  },
+  // エディタのスクリーンリーダーのサポートを無効化
+  "editor.accessibilitySupport": "off",
+  "editor.mouseWheelZoom": true,
+  // 起動時にターミナルを表示しない
+  "terminal.integrated.hideOnStartup": "always",
+  // タイトル(コマンドセンター)に表示される情報をカスタマイズ
+  "window.title": "${remoteName}${separator}${rootPath}",
+  // レイアウトコントロールを表示しない
+  "workbench.layoutControl.enabled": false,
+  // 起動時にエディタを表示しない
+  "workbench.startupEditor": "none",
+  // エディタを開いてないときのヒントを消す
+  "workbench.tips.enabled": false,
+  // サイドバーのスクロール滑らかに
+  "workbench.list.smoothScrolling": true,
+  // サイドバーで常にファイルのアクションを表示
+  "workbench.view.alwaysShowHeaderActions": true,
+  // ツリーのインデントを4に設定
+  "workbench.tree.indent": 4,
+  // ツリーでインデントのガイドを表示
+  "workbench.tree.renderIndentGuides": "always",
+  // ツリーのアイコン表示
+  "workbench.iconTheme": "material-icon-theme",
+  "material-icon-theme.files.associations": {
+    "*.sh_master": "console",
+    "*.gp": "3d",
+    "*.gp_master": "3d",
+    "*.dat": "database",
+    "*.out": "exe",
+    "*.err": "log",
+  },
+  "material-icon-theme.folders.associations": {
+    "obj": "other",
+    "ref": "download",
+  },
+  // タブが画面幅を超えたときに折り返す
+  "workbench.editor.wrapTabs": true,
+  // エディタのフォントをカスタマイズ（フォールバック付き）
+  "editor.fontFamily": "'HackGen35 Console NF Regular', 'Ubuntu Mono', 'DejaVu Sans Mono', monospace",
+  // エディタのフォントサイズ
+  "editor.fontSize": 14,
+  // エディタのスクロールをスムーズに
+  "editor.smoothScrolling": true,
+  // エディタのスクロール感度を調整
+  "editor.mouseWheelScrollSensitivity": 3,
+  // エディタで行末の空白を表示
+  "editor.renderWhitespace": "trailing",
+  // エディタで自動的に行を折り返す
+  "editor.wordWrap": "on",
+  // エディタで折り返した行のインデントを下げる
+  "editor.wrappingIndent": "indent",
+  // スクロールバーを非表示(幅を0に設定)
+  "editor.scrollbar.verticalScrollbarSize": 0,
+  // ミニマップのスクロールバーを常に表示
+  "editor.minimap.showSlider": "always",
+  // 表示するミニマップの最大幅を特定の列数に制限
+  "editor.minimap.maxColumn": 90,
+  // ミニマップのサイズを制御
+  "editor.minimap.size": "fit",
+  // ミニマップに文字を表示しない
+  "editor.minimap.renderCharacters": false,
+  // 選択行の行番号をハイライトする
+  "editor.renderLineHighlight": "all",
+  // とじしろのの折りたたみコントロールを常に表示
+  "editor.showFoldingControls": "always",
+  // カーソルスタイルをブロックに設定
+  "editor.cursorStyle": "block",
+  // カーソルが滑らかに点滅するように
+  "editor.cursorBlinking": "smooth",
+  // カーソルの点滅をアニメーション表示
+  "editor.cursorSmoothCaretAnimation": "on",
+  // カーソル位置と同単語の自動ハイライト表示解除
+  "editor.occurrencesHighlight": "off",
+  // 対応する括弧を強調表示
+  "editor.matchBrackets": "near",
+  // 括弧の対応関係を視覚的に表示
+  //"editor.guides.bracketPairs": true,
+  // 括弧の対応を色付ける
+  "editor.bracketPairColorization.enabled": true,
+  // 閉じ括弧の自動補完
+  "editor.autoClosingBrackets": "beforeWhitespace",
+  // 閉じ引用符の自動補完
+  "editor.autoClosingQuotes": "beforeWhitespace",
+  // 日本語で単語移動を使うための区切り文字の指定
+  "editor.wordSeparators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?　、。「」【】『』（）！？てにをはがのともへでや",
+  // スニペット補完中にも補完を使えるようにする
+  "editor.suggest.snippetsPreventQuickSuggestions": false,
+  // エディタのインレイヒント
+  "editor.inlayHints.enabled": "offUnlessPressed",
+  // エラーレンズの設定
+  "errorLens.gutterIconsEnabled": true,
+  "errorLens.enabledDiagnosticLevels": [
+    "error",
+    "warning",
+  ],
+  // Github Copilotの設定
+  "github.copilot.enable": {
+    "markdown": true
+  },
+  "github.copilot.nextEditSuggestions.enabled": true,
+  // タブサイズを2に設定
+  "editor.tabSize": 2,
+  // ファイル固有のインデント幅の検出を無効化
+  "editor.detectIndentation": false,
+  // コード貼付け時に自動的にインデントを調整
+  "editor.autoIndent": "full",
+  // インデントガイドの非表示
+  "editor.guides.indentation": false,
+  // Blockmanの設定
+  "blockman.n23AnalyzeSquareBrackets": true,
+  "blockman.n24AnalyzeRoundBrackets": true,
+  "blockman.n27AlsoRenderBlocksInsideSingleLineAreas": true,
+  "blockman.n21BorderRadius": 0,
+  "blockman.n28TimeToWaitBeforeRerenderAfterLastChangeEvent": 0.2,
+  "blockman.n33A01B2FromDepth0ToInwardForAllBackgrounds": "45,0,0,2; none",
+  "blockman.n34A02BorderThicknessOfFocusedBlock": 0.5,
+  "blockman.n34A01BorderThicknessOfNonFocusedBlock": 0.5,
+  "blockman.n20CustomColorOfDepth0Border": "none",
+  "blockman.n18CustomColorOfFocusedBlockBorder": "#808080",
+  "blockman.n19CustomColorOfBlockBorder": "#323232",
+  // indent-rainbowの設定
+  "indentRainbow.updateDelay": 10,
+  "indentRainbow.colors": [
+    "rgba(128,  64,  64, 0.15)", // 赤
+    "rgba(160,  90,  20, 0.15)", // 橙
+    "rgba(128, 128,  32, 0.20)", // 黄
+    "rgba( 32, 128,  32, 0.20)", // 緑
+    "rgba( 32,  64, 128, 0.20)", // 青
+    "rgba(255, 255, 255, 0.05)", // 白
+  ],
+  // 入力した行を自動でフォーマット
+  "editor.formatOnType": true,
+  // ファイル保存時に自動的にフォーマット
+  "editor.formatOnSave": false,
+  // エディタがフォーカスを失ったときにファイルを自動保存
+  "files.autoSave": "onFocusChange",
+  // ファイルのエンコーディングをUTF-8に設定
+  "files.encoding": "utf8",
+  // ファイルの末尾に自動的に改行を追加
+  "files.insertFinalNewline": true,
+  // ファイルの末尾にある余分な改行を削除
+  "files.trimFinalNewlines": true,
+  // ファイル保存時に各行の末尾にある半角スペースを削除
+  "files.trimTrailingWhitespace": true,
+  // -------- 言語(拡張子)ごとの設定 ---------
+  // 特定のファイル拡張子に対してエディタを指定
+  "files.associations": {
+    "*.dat": "plaintext",
+    "*.err": "log",
+    "*.sh_master": "shellscript",
+    "*.gp_master": "gnuplot",
+  },
+  "[plaintext]": {
+    // 折り返さない
+    "editor.wordWrap": "off",
+    // 保存時にフォーマットを行わない
+    "editor.formatOnSave": false
+  },
+  "[log]": {
+    // 折り返さない
+    "editor.wordWrap": "off",
+    // 保存時にフォーマットを行わない
+    "editor.formatOnSave": false,
+  },
+  "[shellscript]": {
+    // 既定フォーマッターの設定
+    "editor.defaultFormatter": "foxundermoon.shell-format",
+  },
+  "[gnuplot]": {
+    // 保存時にフォーマットを行わない
+    "editor.formatOnSave": false,
+  },
+  "[latex]": {
+    // 折り返し時にインデントを維持
+    "editor.wrappingIndent": "same",
+    // 保存時にフォーマットを行わない
+    "editor.formatOnSave": false,
+  },
+  "[markdown]": {
+    // 折り返し時にインデントを維持
+    "editor.wrappingIndent": "same",
+    // 保存時にフォーマットを行わない
+    "editor.formatOnSave": false,
+    // 保存時に文末の空白を削除しない
+    "files.trimTrailingWhitespace": false,
+  },
+  // markdownのtocで番号付きリストを使用
+  "markdown.extension.toc.orderedList": true,
+  // markdownのtocでレベル2から6まで表示
+  "markdown.extension.toc.levels": "2..6",
+  // ------ diff editor -------
+  // 差分エディタで折り返しを無効化
+  "diffEditor.wordWrap": "off",
+  // 差分エディタでコードレンズを有効化
+  "diffEditor.codeLens": true,
+  // ---------- Git ----------
+  "git.openRepositoryInParentFolders": "always",
+  "git.confirmSync": false,
+  // Gitの変更を表示するときに、変更された行をハイライト
+  "explorer.decorations.colors": true,
+  // Gitの古い警告を無視
+  "git.ignoreLegacyWarning": true,
+  // ---------- C/C++ 設定 ----------
+  "C_Cpp.default.compilerPath": "/usr/bin/gcc",
+  "C_Cpp.default.intelliSenseMode": "linux-gcc-x64",
+  "C_Cpp.default.includePath": [
+    "${workspaceFolder}/**",
+    "/usr/include",
+    "/usr/local/include"
+  ],
+  "makefile.configureOnOpen": true,
+  // ---------- Code Runner ----------
+  // code runnerを規定のターミナルで実行
+  "code-runner.runInTerminal": true,
+  // code runnerでC/C++をコンパイルする際、実行ファイル名を*.out
+  "code-runner.executorMap": {
+    "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt.out && ./$fileNameWithoutExt.out",
+    "cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt.out && ./$fileNameWithoutExt.out",
+  },
+  // code runnerでgnuplotを実行
+  "code-runner.executorMapByFileExtension": {
+    "gnuplot": "cd $dir && gnuplot $fileName",
+  },
+  // ---------- LaTeX Workshop ----------
+  //  参考: https://github.com/James-Yu/latex-workshop/wiki/
+  //   LaTeX Workshop ではビルド設定を「Tool」と「Recipe」という2つで考える
+  //   Tool: 実行される1つのコマンド。コマンド (command) と引数 (args) で構成される。
+  //   Recipe: Tool の組み合わせを定義する。Tool の組み合わせ (tools) で構成される。
+  //           tools の中で利用される Tool は "latex-workshop.latex.tools" で定義されている必要がある。
+  "latex-workshop.latex.tools": [
+    {
+      "name": "Latexmk (pdfLaTeX)",
+      "command": "latexmk",
+      "args": [
+        "-f",
+        "-gg",
+        "-pdflatex",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%",
+      ],
+    },
+    {
+      "name": "Latexmk (LuaLaTeX)",
+      "command": "latexmk",
+      "args": [
+        "-f",
+        "-gg",
+        "-lualatex",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%",
+      ],
+    },
+    {
+      "name": "Latexmk (XeLaTeX)",
+      "command": "latexmk",
+      "args": [
+        "-f",
+        "-gg",
+        "-xelatex",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%",
+      ],
+    },
+    {
+      "name": "Latexmk (upLaTeX)",
+      "command": "latexmk",
+      "args": [
+        "-f",
+        "-gg",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%",
+      ],
+    },
+    {
+      "name": "Latexmk (pLaTeX)",
+      "command": "latexmk",
+      "args": [
+        "-f",
+        "-gg",
+        "-latex='platex'",
+        "-latexoption='-kanji=utf8 -no-guess-input-env'",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%",
+      ],
+    },
+  ],
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "pdfLaTeX",
+      "tools": [
+        "Latexmk (pdfLaTeX)",
+      ],
+    },
+    {
+      "name": "LuaLaTeX",
+      "tools": [
+        "Latexmk (LuaLaTeX)",
+      ],
+    },
+    {
+      "name": "XeLaTeX",
+      "tools": [
+        "Latexmk (XeLaTeX)",
+      ],
+    },
+    {
+      "name": "upLaTeX",
+      "tools": [
+        "Latexmk (upLaTeX)",
+      ],
+    },
+    {
+      "name": "pLaTeX",
+      "tools": [
+        "Latexmk (pLaTeX)",
+      ],
+    },
+  ],
+  "latex-workshop.latex.recipe.default": "pdfLaTeX",
+  // 出力ファイルをoutputディレクトリに
+  "latex-workshop.latex.outDir": "output",
+  // PDF ビューアの開き方
+  "latex-workshop.view.pdf.viewer": "tab",
+  // Tex 文書のカーソル位置で PDF を表示
+  "latex-workshop.synctex.afterBuild.enabled": true,
+  // 自動的にビルドを行うかどうか
+  "latex-workshop.latex.autoBuild.run": "onSave",
+  // 使用パッケージのコマンドや環境の補完を有効にする
+  "latex-workshop.intellisense.package.enabled": true,
+  // インテリセンス更新をアグレッシブに行う
+  "latex-workshop.intellisense.update.aggressive.enabled": true,
+  // lintingの頻度の設定
+  "latex-workshop.linting.run": "onType",
+  // ChkTexを用いた構文チェック
+  "latex-workshop.linting.chktex.enabled": true,
+  // LaCheckを用いた構文チェック
+  //"latex-workshop.linting.lacheck.enabled": true,
+  // BibTeXの警告メッセージを抑制
+  "latex-workshop.message.bibtexlog.exclude": [
+    "info",
+    "log",
+    "warning",
+  ],
+  // ---------- Code Spell Checker ----------
+  "cSpell.enabledSchemes": {
+    "comment": true,
+    "file": true,
+    "gist": true,
+    "repo": true,
+    "sftp": true,
+    "untitled": true,
+    "vscode-notebook-cell": true,
+    "vscode-scm": true,
+    "vscode-userdata": true,
+    "vscode-vfs": true,
+    "vsls": true,
+    "overleaf-workshop": true
+  },
+}

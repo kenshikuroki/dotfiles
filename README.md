@@ -6,13 +6,13 @@ This repository contains my personal dotfiles, primarily intended for use on WSL
 ### Features
 - Personal configuration files for various tools and editors:
 	- Shell:   bash, zsh, starship prompt
-	- Editors: Emacs, etc.
+	- Editors: VS Code, Emacs
 	- Others:  Git, SSH, Other useful CLI tools, etc.
 - Package management:
 	- List of apt and npm packages for easy setup (`packages/apt.list`, `packages/npm.list`)
 - Scripts for automation:
 	- `install.sh`: Automated initial setup (package install, config symlinks, backup)
-	- `update.sh`: Update installed packages and binaries, with backup and logging
+	- `update.sh`:  Update installed packages and binaries, with backup and logging
 - Backup and restore:
 	- Automatic backup of existing config files before overwriting
 	- Log files for tracking changes and updates
