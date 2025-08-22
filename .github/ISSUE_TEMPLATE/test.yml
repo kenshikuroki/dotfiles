@@ -1,0 +1,12 @@
+name: Test Template
+description: テスト用の最小テンプレート
+title: "[TEST] "
+labels: ["test"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: テストの説明
+    validations:
+      required: true
