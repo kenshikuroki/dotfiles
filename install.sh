@@ -250,6 +250,14 @@ symlink_create() {
   for name in "${!symlink_targets[@]}"; do
     local link_path="$HOME/$name"
     local target_path="${symlink_targets[$name]}"
+    # 親ディレクトリが存在しない場合は作成する
+    local link_dir
+    link_dir="$(dirname "$link_path")"
+    if [[ ! -d "$link_dir" ]]; then
+      if ! mkdir -p "$link_dir"; then
+        error "Failed to create parent directory: $link_dir (required for $link_path)"
+      fi
+    fi
     if [[ -e "$link_path" || -L "$link_path" ]]; then
       if ! \rm -rf "$link_path"; then
         error "Failed to remove existing: $link_path"
