@@ -1,0 +1,51 @@
+name: Generic
+description: 汎用的なIssueテンプレート
+title: ""
+labels: []
+assignees: []
+body:
+  - type: textarea
+    id: as-is
+    attributes:
+      label: 現状（As is）
+      description: 対応しないことで発生する課題
+      placeholder: ""
+      value: ""
+    validations:
+      required: true
+  - type: textarea
+    id: to-be
+    attributes:
+      label: 理想（To be）
+      description: タスク完了条件
+      placeholder: ""
+      value: ""
+    validations:
+      required: true
+  - type: textarea
+    id: requirements
+    attributes:
+      label: 準備（Requirements）
+      description: 必要な前提条件や決めるべき事
+      placeholder: ""
+      value: ""
+    validations:
+      required: false
+  - type: textarea
+    id: related
+    attributes:
+      label: 関連ソース（Related src）
+      description: 関連するソースコードやファイル
+      placeholder: ""
+      value: ""
+    validations:
+      required: false
+  - type: textarea
+    id: actions
+    attributes:
+      label: 対応案（Actions）
+      description: 対応する流れやアクション
+      placeholder: ""
+      value: ""
+    validations:
+      required: false

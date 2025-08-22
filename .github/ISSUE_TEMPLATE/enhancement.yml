@@ -1,0 +1,79 @@
+
+name: Enhancement
+description: 機能追加・改善用テンプレート
+title: ""
+labels: [enhancement]
+assignees: []
+body:
+	- type: textarea
+		id: summary
+		attributes:
+			label: 概要
+			description: 簡単な説明
+			placeholder: ""
+			value: ""
+		validations:
+			required: true
+	- type: textarea
+		id: background
+		attributes:
+			label: 背景・目的
+			description: 必要性
+			placeholder: ""
+			value: ""
+		validations:
+			required: true
+	- type: textarea
+		id: tobe
+		attributes:
+			label: 理想（To be）
+			description: 実現したい理想の状態やゴール
+			placeholder: ""
+			value: ""
+		validations:
+			required: true
+  - type: textarea
+    id: requirements
+    attributes:
+      label: 準備（Requirements）
+      description: 必要な前提条件や決めるべき事
+      placeholder: ""
+      value: ""
+    validations:
+      required: false
+  - type: textarea
+    id: related
+    attributes:
+      label: 関連ソース（Related src）
+      description: 関連するソースコードやファイル
+      placeholder: ""
+      value: ""
+    validations:
+      required: false
+  - type: textarea
+    id: actions
+    attributes:
+      label: 対応案（Actions）
+      description: 対応する流れやアクション
+      placeholder: ""
+      value: ""
+    validations:
+      required: false
+	- type: textarea
+		id: related
+		attributes:
+			label: 参考情報
+			description: 参考になりそうな情報
+			placeholder: ""
+			value: ""
+		validations:
+			required: false
+	- type: textarea
+		id: others
+		attributes:
+			label: その他・備考
+			description: その他、補足事項や備考
+			placeholder: ""
+			value: ""
+		validations:
+			required: false
