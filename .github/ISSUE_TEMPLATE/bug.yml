@@ -1,6 +1,6 @@
 name: Bug Report
 description: バグ用テンプレート
-title: ""
+title: "[Bug] "
 labels: [bug]
 assignees: []
 body:

@@ -1,7 +1,7 @@
 name: Generic
 description: 汎用的なIssueテンプレート
-title: ""
-labels: []
+title: "[GENERIC] "
+labels: ["generic"]
 assignees: []
 body:
   - type: textarea
