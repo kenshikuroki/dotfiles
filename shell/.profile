@@ -1,14 +1,14 @@
 #!/bin/bash
 
-# Run zsh
-echo "上智のサーバーはbashでしかログインできないため、.profileからexec zsh --loginを実行してzshに切り替えている。"
-echo "bashにログインするには、.profile中のexec zsh --loginをコメントアウトしてからexec bash --loginを実行。"
-exec zsh --login
-
 # export PATH
 if [[ "$PATH" != *"$HOME/.local/bin"* ]]; then
   export PATH="$HOME/.local/bin:$PATH"
 fi
+
+# Run zsh
+echo "上智のサーバーはbashでしかログインできないため、.profileからexec zsh --loginを実行してzshに切り替えている。"
+echo "bashにログインするには、.profile中のexec zsh --loginをコメントアウトしてからexec bash --loginを実行。"
+exec zsh --login
 
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
