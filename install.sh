@@ -422,8 +422,11 @@ main() {
     log "Installation cancelled"
     exit 0
   fi
-  if sudo -v; then
-    success "sudo authentication succeeded"
+  # サーバーの場合はsudo認証をスキップ
+  if ! is_special_server; then
+    if sudo -v; then
+      success "sudo authentication succeeded"
+    fi
   fi
   echo ""
   log "=== dotfiles installation started ==="

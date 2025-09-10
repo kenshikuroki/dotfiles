@@ -446,3 +446,9 @@ alias neumann='ssh neumann'
 alias landau='ssh landau'
 alias noether='ssh noether'
 alias bessel='ssh bessel'
+
+#============================
+# noether/bessel専用: gcc7有効化
+if [[ "$HOSTNAME" == "noether" || "$HOSTNAME" == "bessel" ]]; then
+  source /opt/rh/devtoolset-7/enable
+fi
