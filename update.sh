@@ -171,7 +171,9 @@ warn() {
   log_message "WARN" "$1"
 }
 debug() {
-  [[ "$VERBOSE" == "true" ]] && log_message "DEBUG" "$1"
+  if [[ "$VERBOSE" == "true" ]]; then
+    log_message "DEBUG" "${1:-}"
+  fi
 }
 
 # --- APTパッケージ更新 ---
