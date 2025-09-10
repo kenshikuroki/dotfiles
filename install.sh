@@ -381,17 +381,40 @@ zsh_default_shell() {
 }
 
 #========================================================================
-# main
+
+
+# サーバー判定関数
+is_special_server() {
+  # $HOSTNAMEがnoether/besselならtrue
+  if [[ "${HOSTNAME:-}" == "noether" || "${HOSTNAME:-}" == "bessel" ]]; then
+    return 0
+  fi
+  # $HOSTNAMEが未定義または空文字ならhostnameコマンドで判定
+  local hname
+  hname=$(hostname)
+  if [[ "$hname" == "neumann" || "$hname" == "landau" ]]; then
+    return 0
+  fi
+  return 1
+}
+
+# main関数
 main() {
   echo ""
   echo "This script will:"
-  echo "  - Install apt packages from $PACKAGES_DIR/apt.list"
-  echo "  - Install npm packages from $PACKAGES_DIR/npm.list"
-  echo "  - Install custom tools"
-  echo "  - Create symbolic links for configuration files"
-  echo "  - Install Zsh plugins"
-  echo "  - Change default shell to Zsh"
-  echo "  - Start Zsh"
+  if is_special_server; then
+    echo "  - Install custom tools"
+    echo "  - Create symbolic links for configuration files (backup included)"
+    echo "  - Install Zsh plugins"
+  else
+    echo "  - Install apt packages from $PACKAGES_DIR/apt.list"
+    echo "  - Install npm packages from $PACKAGES_DIR/npm.list"
+    echo "  - Install custom tools"
+    echo "  - Create symbolic links for configuration files"
+    echo "  - Install Zsh plugins"
+    echo "  - Change default shell to Zsh"
+    echo "  - Start Zsh"
+  fi
   echo ""
   read -p "Continue? (y/n): " -n 1 -r
   echo
@@ -405,6 +428,21 @@ main() {
   echo ""
   log "=== dotfiles installation started ==="
   info "Dotfiles directory: $DOTFILES_DIR"
+  if is_special_server; then
+    log "=== Installing useful tools ==="
+    tools_install
+    log "=== Creating symlinks (special server mode) ==="
+    symlink_backup
+    symlink_create
+    log "=== Installing zsh plugins (special server mode) ==="
+    zshplugins_install
+    log "=== dotfiles installation completed (special server mode) ==="
+    info "Backup created at: $BACKUP_DIR"
+    info "Log file: $LOG_FILE"
+    echo ""
+    return 0
+  fi
+  # 通常モード
   log "=== Installing packages ==="
   apt_install
   npm_install

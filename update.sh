@@ -1,6 +1,19 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# --- サーバー判定関数 ---
+is_special_server() {
+  if [[ "${HOSTNAME:-}" == "noether" || "${HOSTNAME:-}" == "bessel" ]]; then
+    return 0
+  fi
+  local hname
+  hname=$(hostname)
+  if [[ "$hname" == "neumann" || "$hname" == "landau" ]]; then
+    return 0
+  fi
+  return 1
+}
+
 # --- 基本設定 ---
 DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
 BIN_DIR="$HOME/.local/bin"
