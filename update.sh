@@ -324,10 +324,16 @@ cleanup() {
 }
 
 # --- メイン処理 ---
+
 main() {
   echo "========== Update started at $(date) ==========" | tee -a "$LOG_FILE"
   info "Dotfiles update script"
   info "Log file: $LOG_FILE"
+  if is_special_server; then
+    UPDATE_APT=false
+    UPDATE_NPM=false
+    UPDATE_BINARIES=true
+  fi
   # 更新対象の確認
   local updates=()
   [[ "$UPDATE_APT" == "true" ]] && updates+=("apt packages")
