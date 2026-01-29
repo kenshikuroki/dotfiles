@@ -203,18 +203,18 @@ function tools_install() {
 #========================================================================
 # シンボリックリンク作成
 declare -A symlink_targets=(
-  [".bashrc"]="$DOTFILES_DIR/shell/.bashrc"
-  [".profile"]="$DOTFILES_DIR/shell/.profile"
-  [".zshrc"]="$DOTFILES_DIR/shell/.zshrc"
-  [".zprofile"]="$DOTFILES_DIR/shell/.zprofile"
-  [".gitconfig"]="$DOTFILES_DIR/git/.gitconfig"
-  [".gitignore_global"]="$DOTFILES_DIR/git/.gitignore_global"
+  [".bashrc"]="$DOTFILES_DIR/shell/bashrc"
+  [".profile"]="$DOTFILES_DIR/shell/profile"
+  [".zshrc"]="$DOTFILES_DIR/shell/zshrc"
+  [".zprofile"]="$DOTFILES_DIR/shell/zprofile"
+  [".gitconfig"]="$DOTFILES_DIR/git/gitconfig"
+  [".gitignore_global"]="$DOTFILES_DIR/git/gitignore_global"
   [".ssh/config"]="$DOTFILES_DIR/ssh/config"
   [".vscode/settings.json"]="$DOTFILES_DIR/editors/vscode/settings.json"
   [".vscode/extensions.json"]="$DOTFILES_DIR/editors/vscode/extensions.json"
   [".vscode/keybindings.json"]="$DOTFILES_DIR/editors/vscode/keybindings.json"
   [".emacs.d/init.el"]="$DOTFILES_DIR/editors/emacs/init.el"
-  [".latexmkrc"]="$DOTFILES_DIR/tex/.latexmkrc"
+  [".latexmkrc"]="$DOTFILES_DIR/tex/latexmkrc"
   [".config/starship.toml"]="$DOTFILES_DIR/config/starship.toml"
   [".config/lazygit/config.yml"]="$DOTFILES_DIR/config/lazygit/config.yml"
 )
