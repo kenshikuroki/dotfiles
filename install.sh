@@ -210,6 +210,7 @@ declare -A symlink_targets=(
   [".gitconfig"]="$DOTFILES_DIR/git/gitconfig"
   [".gitignore_global"]="$DOTFILES_DIR/git/gitignore_global"
   [".ssh/config"]="$DOTFILES_DIR/ssh/config"
+  [".tmux.conf"]="$DOTFILES_DIR/tmux/tmux.conf"
   [".vscode/settings.json"]="$DOTFILES_DIR/editors/vscode/settings.json"
   [".vscode/extensions.json"]="$DOTFILES_DIR/editors/vscode/extensions.json"
   [".vscode/keybindings.json"]="$DOTFILES_DIR/editors/vscode/keybindings.json"
