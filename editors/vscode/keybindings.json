@@ -1,75 +1,6 @@
 // 既定値を上書きするには、このファイル内にキー バインドを挿入します
 [
   {
-    "key": "ctrl+alt+b",
-    "command": "-emacs-mcx.paredit.backwardSexp",
-    "when": "editorTextFocus && !config.emacs-mcx.useMetaPrefixMacCmd"
-  },
-  {
-    "key": "ctrl+alt+b",
-    "command": "-emacs-mcx.paredit.backwardSexp",
-    "when": "config.emacs-mcx.useMetaPrefixMacCmd && editorTextFocus"
-  },
-  {
-    "key": "ctrl+alt+k",
-    "command": "-emacs-mcx.paredit.killSexp",
-    "when": "editorTextFocus && !config.emacs-mcx.useMetaPrefixMacCmd"
-  },
-  {
-    "key": "ctrl+alt+k",
-    "command": "-emacs-mcx.paredit.killSexp",
-    "when": "config.emacs-mcx.useMetaPrefixMacCmd && editorTextFocus"
-  },
-  {
-    "key": "ctrl+alt+n",
-    "command": "-emacs-mcx.addSelectionToNextFindMatch",
-    "when": "editorFocus && !config.emacs-mcx.useMetaPrefixMacCmd"
-  },
-  {
-    "key": "ctrl+alt+n",
-    "command": "-emacs-mcx.addSelectionToNextFindMatch",
-    "when": "config.emacs-mcx.useMetaPrefixMacCmd && editorFocus"
-  },
-  {
-    "key": "ctrl+alt+j",
-    "command": "-code-runner.runByLanguage"
-  },
-  {
-    "key": "ctrl+space",
-    "command": "-emacs-mcx.setMarkCommand",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "ctrl+j",
-    "command": "-emacs-mcx.isearchExit",
-    "when": "editorFocus && findWidgetVisible && !isComposing"
-  },
-  {
-    "key": "ctrl+j",
-    "command": "-emacs-mcx.newLine",
-    "when": "editorTextFocus && !editorReadonly"
-  },
-  {
-    "key": "ctrl+b",
-    "command": "-emacs-mcx.backwardChar",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "ctrl+b",
-    "command": "-emacs-mcx.backwardChar",
-    "when": "terminalFocus"
-  },
-  {
-    "key": "ctrl+f",
-    "command": "-emacs-mcx.forwardChar",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "ctrl+f",
-    "command": "-emacs-mcx.forwardChar",
-    "when": "terminalFocus"
-  },
-  {
     "key": "ctrl+shift+j",
     "command": "workbench.action.toggleMaximizedPanel"
   },
@@ -78,24 +9,4 @@
     "command": "redo",
     "when": "editorTextFocus && !editorReadonly"
   },
-  {
-    "key": "alt+left",
-    "command": "-emacs-mcx.backwardWord",
-    "when": "editorTextFocus && !config.emacs-mcx.useMetaPrefixMacCmd"
-  },
-  {
-    "key": "alt+left",
-    "command": "-emacs-mcx.backwardWord",
-    "when": "config.emacs-mcx.useMetaPrefixMacCmd && editorTextFocus"
-  },
-  {
-    "key": "alt+right",
-    "command": "-emacs-mcx.forwardWord",
-    "when": "editorTextFocus && !config.emacs-mcx.useMetaPrefixMacCmd"
-  },
-  {
-    "key": "alt+right",
-    "command": "-emacs-mcx.forwardWord",
-    "when": "config.emacs-mcx.useMetaPrefixMacCmd && editorTextFocus"
-  }
 ]
