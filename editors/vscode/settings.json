@@ -15,87 +15,6 @@
   "remote.SSH.connectTimeout": 60,
   "remote.SSH.maxReconnectionAttempts": 5,
 
-  // ---- ターミナル ----
-  "terminal.integrated.hideOnStartup": "always",
-  "terminal.integrated.fontFamily": "HackGen35 Console NF Regular",
-  "terminal.integrated.fontSize": 14,
-  "terminal.integrated.fontWeight": 300,
-  "terminal.integrated.fontWeightBold": 500,
-  "terminal.integrated.scrollback": 5000,
-  "terminal.integrated.enableMultiLinePasteWarning": "never",
-  "terminal.integrated.defaultProfile.windows": "PowerShell",
-  "terminal.integrated.profiles.windows": {
-    "JavaScript デバッグ ターミナル": null
-  },
-  "terminal.integrated.defaultProfile.linux": "bash",
-  "terminal.integrated.profiles.linux": {
-    "bash": {
-      "path": "/bin/bash",
-      "args": [
-        "-c",
-        "if [ -f ~/.bash_profile ]; then source ~/.bash_profile; elif [ -f ~/.profile ]; then source ~/.profile; fi; exec bash"
-      ]
-    },
-    "JavaScript デバッグ ターミナル": null,
-    "tmux": null
-  },
-  //"window.closeWhenEmpty": true,
-  "workbench.commandPalette.experimental.suggestCommands": true,
-  "workbench.startupEditor": "none",
-  "workbench.tips.enabled": false,
-  "workbench.list.smoothScrolling": true,
-  "workbench.tree.indent": 4,
-  "workbench.tree.renderIndentGuides": "always",
-  "workbench.iconTheme": "material-icon-theme",
-  "workbench.editor.wrapTabs": true,
-  "workbench.editor.highlightModifiedTabs": true,
-  "workbench.secondarySideBar.defaultVisibility": "hidden",
-  "workbench.secondarySideBar.showLabels": false,
-  "workbench.editor.empty.hint": "hidden",
-  "workbench.colorCustomizations": {
-    "statusBarItem.remoteBackground": "#4e4e4e",
-    "statusBarItem.errorForeground": "#ffffff",
-    "statusBarItem.errorBackground": "#b100009c",
-    "statusBarItem.prominentForeground": "#ffffff",
-    "statusBarItem.prominentBackground": "#a68500e0",
-    "minimap.background": "#1f1f1f",
-    "minimap.foregroundOpacity": "#000000cc",
-    "minimap.infoHighlight": "#3794ff50",
-    "minimapSlider.background": "#797f8660",
-    "minimapSlider.activeBackground": "#797f86aa",
-    "minimapSlider.hoverBackground": "#797f86aa",
-    "editor.lineHighlightBackground": "#797f8624",
-    "editor.lineHighlightBorder": "#797f8624",
-    "editorBracketHighlight.foreground1": "#ffffff",
-    "editorBracketHighlight.foreground2": "#900000",
-    "editorBracketHighlight.foreground3": "#bd6800",
-    "editorBracketHighlight.foreground4": "#d2d200",
-    "editorBracketHighlight.foreground5": "#28a228",
-    "editorBracketHighlight.foreground6": "#2c57ad",
-    "panel.background": "#161821",
-    "terminal.ansiBlack": "#1e2132",
-    "terminal.ansiBlue": "#84a0c6",
-    "terminal.ansiBrightBlack": "#6b7089",
-    "terminal.ansiBrightBlue": "#91acd1",
-    "terminal.ansiBrightCyan": "#95c4ce",
-    "terminal.ansiBrightGreen": "#c0ca8e",
-    "terminal.ansiBrightMagenta": "#ada0d3",
-    "terminal.ansiBrightRed": "#e98989",
-    "terminal.ansiBrightWhite": "#d2d4de",
-    "terminal.ansiBrightYellow": "#e9b189",
-    "terminal.ansiCyan": "#89b8c2",
-    "terminal.ansiGreen": "#b4be82",
-    "terminal.ansiMagenta": "#a093c7",
-    "terminal.ansiRed": "#e27878",
-    "terminal.ansiWhite": "#c6c8d1",
-    "terminal.ansiYellow": "#e2a478",
-    "terminal.foreground": "#c6c8d1",
-    "terminal.selectionBackground": "#4a548266",
-    "terminalCommandDecoration.defaultBackground": "#6b7089",
-    "terminalCommandDecoration.errorBackground": "#e27878",
-    "terminalCommandDecoration.successBackground": "#84a0c6"
-  },
-
   // ---- エディタ表示・操作 ----
   "editor.accessibilitySupport": "off",
   "editor.mouseWheelZoom": true,
@@ -112,6 +31,7 @@
   "editor.occurrencesHighlight": "off",
   "editor.matchBrackets": "near",
   "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true,
   "editor.smoothScrolling": true,
   "editor.scrollbar.verticalScrollbarSize": 0,
   "editor.scrollbar.horizontalScrollbarSize": 10,
@@ -129,9 +49,9 @@
   "screencastMode.fontSize": 50,
 
   // ---- 編集支援・入力補助 ----
+  "editor.wordSegmenterLocales": ["ja"],
   "editor.autoClosingBrackets": "beforeWhitespace",
   "editor.autoClosingQuotes": "beforeWhitespace",
-  "editor.wordSeparators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?　、。「」【】『』（）！？てにをはがのともへでや",
   "editor.suggest.snippetsPreventQuickSuggestions": false,
   "editor.inlayHints.enabled": "offUnlessPressed",
   "editor.tabSize": 2,
@@ -206,10 +126,36 @@
   "markdownlint.config": {
     "MD012": false
   },
+  "C_Cpp.default.compilerPath": "/usr/bin/gcc",
+  "C_Cpp.default.intelliSenseMode": "linux-gcc-x64",
+  "C_Cpp.default.includePath": [
+    "${workspaceFolder}/**",
+    "/usr/include",
+    "/usr/local/include"
+  ],
+
+  // ---- 検索・エクスプローラー・ファイルツリー ----
+  "search.defaultViewMode": "tree",
+  "search.showLineNumbers": true,
+  "explorer.decorations.colors": true,
+  "explorer.compactFolders": false,
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.excludeGitIgnore": true,
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    "*.sh": "${capture}.master.sh, ${capture}.sh_master, ${capture}.sh.*",
+    "*.gp": "${capture}.master.gp, ${capture}.gp_master, ${capture}.gp.*",
+    "*.c": "${capture}.h, ${capture}.o, ${capture}.obj, ${capture}.exe",
+    "*.cpp": "${capture}.hpp, ${capture}.h, ${capture}.o, ${capture}.obj",
+    "Makefile": "makefile, Makefile.*, *.mk",
+    "CMakeLists.txt": "*.cmake, CMakeCache.txt",
+    "README.md": "readme.md, README.*",
+    "LICENSE": "license, LICENSE.*"
+  },
 
   // ---- Diff・Git ----
-  "explorer.decorations.colors": true,
-  "makefile.configureOnOpen": true,
   "diffEditor.wordWrap": "off",
   "diffEditor.codeLens": true,
   "diffEditor.hideUnchangedRegions.enabled": true,
@@ -217,7 +163,99 @@
   "git.openRepositoryInParentFolders": "always",
   "git.confirmSync": false,
   "git.autofetch": true,
+  "git.pruneOnFetch": true,
   "git.ignoreLegacyWarning": true,
+  "scm.alwaysShowActions": true,
+  "scm.compactFolders": true,
+  "scm.defaultViewMode": "tree",
+  "scm.diffDecorationsGutterWidth": 5,
+  "scm.inputFontFamily": "editor",
+
+  // ---- ターミナル ----
+  "terminal.integrated.hideOnStartup": "always",
+  "terminal.integrated.fontFamily": "HackGen35 Console NF Regular",
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.fontWeight": 300,
+  "terminal.integrated.fontWeightBold": 500,
+  "terminal.integrated.scrollback": 5000,
+  "terminal.integrated.smoothScrolling": true,
+  "terminal.integrated.enableMultiLinePasteWarning": "never",
+  "terminal.integrated.enableImages": true,
+  "terminal.integrated.enableVisualBell": true,
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.integrated.profiles.windows": {
+    "JavaScript デバッグ ターミナル": null
+  },
+  "terminal.integrated.defaultProfile.linux": "bash",
+  "terminal.integrated.profiles.linux": {
+    "bash": {
+      "path": "/bin/bash",
+      "args": [
+        "-c",
+        "if [ -f ~/.bash_profile ]; then source ~/.bash_profile; elif [ -f ~/.profile ]; then source ~/.profile; fi; exec bash"
+      ]
+    },
+    "JavaScript デバッグ ターミナル": null,
+    "tmux": null
+  },
+
+  // ---- ワークベンチ・UI ----
+  "workbench.commandPalette.experimental.suggestCommands": true,
+  "workbench.startupEditor": "none",
+  "workbench.tips.enabled": false,
+  "workbench.list.smoothScrolling": true,
+  "workbench.tree.indent": 4,
+  "workbench.tree.renderIndentGuides": "always",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.editor.wrapTabs": true,
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.view.alwaysShowHeaderActions": true,
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
+  "workbench.secondarySideBar.showLabels": false,
+  "workbench.editor.empty.hint": "hidden",
+  "workbench.colorCustomizations": {
+    "statusBarItem.remoteBackground": "#4e4e4e",
+    "statusBarItem.errorForeground": "#ffffff",
+    "statusBarItem.errorBackground": "#b100009c",
+    "statusBarItem.prominentForeground": "#ffffff",
+    "statusBarItem.prominentBackground": "#a68500e0",
+    "minimap.background": "#1f1f1f",
+    "minimap.foregroundOpacity": "#000000cc",
+    "minimap.infoHighlight": "#3794ff50",
+    "minimapSlider.background": "#797f8660",
+    "minimapSlider.activeBackground": "#797f86aa",
+    "minimapSlider.hoverBackground": "#797f86aa",
+    "editor.lineHighlightBackground": "#797f8624",
+    "editor.lineHighlightBorder": "#797f8624",
+    "editorBracketHighlight.foreground1": "#ffffff",
+    "editorBracketHighlight.foreground2": "#900000",
+    "editorBracketHighlight.foreground3": "#bd6800",
+    "editorBracketHighlight.foreground4": "#d2d200",
+    "editorBracketHighlight.foreground5": "#28a228",
+    "editorBracketHighlight.foreground6": "#2c57ad",
+    "panel.background": "#161821",
+    "terminal.ansiBlack": "#1e2132",
+    "terminal.ansiBlue": "#84a0c6",
+    "terminal.ansiBrightBlack": "#6b7089",
+    "terminal.ansiBrightBlue": "#91acd1",
+    "terminal.ansiBrightCyan": "#95c4ce",
+    "terminal.ansiBrightGreen": "#c0ca8e",
+    "terminal.ansiBrightMagenta": "#ada0d3",
+    "terminal.ansiBrightRed": "#e98989",
+    "terminal.ansiBrightWhite": "#d2d4de",
+    "terminal.ansiBrightYellow": "#e9b189",
+    "terminal.ansiCyan": "#89b8c2",
+    "terminal.ansiGreen": "#b4be82",
+    "terminal.ansiMagenta": "#a093c7",
+    "terminal.ansiRed": "#e27878",
+    "terminal.ansiWhite": "#c6c8d1",
+    "terminal.ansiYellow": "#e2a478",
+    "terminal.foreground": "#c6c8d1",
+    "terminal.selectionBackground": "#4a548266",
+    "terminalCommandDecoration.defaultBackground": "#6b7089",
+    "terminalCommandDecoration.errorBackground": "#e27878",
+    "terminalCommandDecoration.successBackground": "#84a0c6"
+  },
 
   // ---- 拡張機能 ----
   // GitHub Copilot
@@ -252,6 +290,7 @@
     "warning"
   ],
   // Spell Checker
+  "clangd.path": "c:\\Users\\kensh\\AppData\\Roaming\\Code\\User\\globalStorage\\llvm-vs-code-extensions.vscode-clangd\\install\\20.1.8\\clangd_20.1.8\\bin\\clangd.exe",
   "cSpell.enabledSchemes": {
     "comment": true,
     "file": true,
@@ -267,17 +306,21 @@
     "overleaf-workshop": true
   },
   // Blockman
+  "blockman.n16EnableFocus": false,
+  "blockman.n18CustomColorOfFocusedBlockBorder": "#808080",
+  "blockman.n19CustomColorOfBlockBorder": "#323232",
+  "blockman.n20CustomColorOfDepth0Border": "none",
+  "blockman.n21BorderRadius": 0,
   "blockman.n23AnalyzeSquareBrackets": true,
   "blockman.n24AnalyzeRoundBrackets": true,
   "blockman.n27AlsoRenderBlocksInsideSingleLineAreas": true,
-  "blockman.n21BorderRadius": 0,
-  "blockman.n28TimeToWaitBeforeRerenderAfterLastChangeEvent": 0.2,
+  "blockman.n27B01HideBlockOfFocusedSingleLineArea": true,
+  "blockman.n28TimeToWaitBeforeRerenderAfterLastChangeEvent": 0.1,
+  "blockman.n29TimeToWaitBeforeRerenderAfterLastFocusEvent": 0.1,
   "blockman.n33A01B2FromDepth0ToInwardForAllBackgrounds": "45,0,0,2; none",
   "blockman.n34A02BorderThicknessOfFocusedBlock": 0.5,
   "blockman.n34A01BorderThicknessOfNonFocusedBlock": 0.5,
-  "blockman.n20CustomColorOfDepth0Border": "none",
-  "blockman.n18CustomColorOfFocusedBlockBorder": "#808080",
-  "blockman.n19CustomColorOfBlockBorder": "#323232",
+  "blockman.n35A01DisableRecommendationDialog": true,
   // Indent Rainbow
   "indentRainbow.updateDelay": 10,
   "indentRainbow.colors": [
@@ -288,6 +331,10 @@
     "rgba( 32,  64, 128, 0.20)",
     "rgba(255, 255, 255, 0.05)"
   ],
+  // Bookmarks
+  "bookmarks.sideBar.hideWelcome": true,
+  "bookmarks.showNoMoreBookmarksWarning": false,
+  "bookmarks.sideBar.expanded": true,
   // LaTeX Workshop
   "latex-workshop.latex.tools": [
     {
@@ -395,9 +442,9 @@
   "latex-workshop.latex.autoBuild.run": "onSave",
   "latex-workshop.view.outline.sync.viewer": true,
   "latex-workshop.view.pdf.toolbar.hide.timeout": 0,
-  "latex-workshop.view.pdf.color.dark.pageColorsForeground": "#202020",
   "latex-workshop.view.pdf.color.dark.pageColorsBackground": "#d2dccb",
-  "latex-workshop.view.pdf.color.dark.backgroundColor": "#000000",
+  "latex-workshop.view.pdf.color.dark.pageColorsForeground": "#202020",
+  "latex-workshop.view.pdf.color.dark.backgroundColor": "#1f1f1f",
   "latex-workshop.intellisense.package.enabled": true,
   "latex-workshop.intellisense.update.aggressive.enabled": true,
   "latex-workshop.linting.run": "onType",
@@ -406,16 +453,5 @@
     "info",
     "log",
     "warning"
-  ],
-  // Overleaf Workshop
-  "overleaf-workshop.pdfViewer.themes": {
-    "light": {
-      "fontColor": "#000000",
-      "bgColor": "#FFFFFF"
-    },
-    "dark": {
-      "fontColor": "#202020",
-      "bgColor": "#d2dccb"
-    }
-  },
+  ]
 }

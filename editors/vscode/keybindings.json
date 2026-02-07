@@ -8,5 +8,5 @@
     "key": "ctrl+shift+oem_2",
     "command": "redo",
     "when": "editorTextFocus && !editorReadonly"
-  },
+  }
 ]
