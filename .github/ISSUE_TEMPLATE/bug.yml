@@ -10,7 +10,6 @@ body:
       label: 概要
       description: バグの簡単な説明
       placeholder: "〇〇が起こる"
-      value: ""
     validations:
       required: true
   - type: textarea
@@ -21,7 +20,6 @@ body:
       placeholder: |
         1. ...
         2. ...
-      value: ""
     validations:
       required: false
   - type: textarea
@@ -29,8 +27,6 @@ body:
     attributes:
       label: 期待される動作
       description: 本来どうなるべきか
-      placeholder: ""
-      value: ""
     validations:
       required: false
   - type: textarea
@@ -38,8 +34,6 @@ body:
     attributes:
       label: 実際の動作
       description: 実際に発生した動作やエラーメッセージ
-      placeholder: ""
-      value: ""
     validations:
       required: false
   - type: textarea
@@ -51,7 +45,6 @@ body:
         - OS: (例: Ubuntu 22.04)
         - シェル: (例: bash)
         - その他: ...
-      value: ""
     validations:
       required: false
   - type: textarea
@@ -59,8 +52,6 @@ body:
     attributes:
       label: 準備（Requirements）
       description: 必要な前提条件や決めるべき事
-      placeholder: ""
-      value: ""
     validations:
       required: false
   - type: textarea
@@ -68,8 +59,6 @@ body:
     attributes:
       label: 関連ソース（Related src）
       description: 関連するソースコードやファイル
-      placeholder: ""
-      value: ""
     validations:
       required: false
   - type: textarea
@@ -77,8 +66,6 @@ body:
     attributes:
       label: 対応案（Actions）
       description: 対応する流れやアクション
-      placeholder: ""
-      value: ""
     validations:
       required: false
   - type: textarea
@@ -86,8 +73,6 @@ body:
     attributes:
       label: 参考情報
       description: 参考になりそうな情報
-      placeholder: ""
-      value: ""
     validations:
       required: false
   - type: textarea
@@ -95,7 +80,5 @@ body:
     attributes:
       label: その他・備考
       description: その他、補足事項や備考
-      placeholder: ""
-      value: ""
     validations:
       required: false
