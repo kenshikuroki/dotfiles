@@ -441,6 +441,11 @@ function fga() {
 }
 alias proot='cd $(git rev-parse --show-toplevel)'
 
+# nvm (Node.js Version Manager)
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
 # ssh
 alias neumann='ssh neumann'
 alias landau='ssh landau'
