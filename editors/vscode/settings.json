@@ -2,7 +2,7 @@
   // ---- セキュリティ・信頼 ----
   "security.workspace.trust.untrustedFiles": "open",
   "security.allowedUNCHosts": [ "wsl.localhost" ],
-  "extensions.verifySignature": false,
+  "extensions.verifySignature": true,
 
   // ---- リモート接続（WSL/SSH） ----
   "remote.SSH.remotePlatform": {
@@ -118,7 +118,6 @@
     "editor.snippetSuggestions": "top",
     "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
   },
-  "markdown.extension.preview.autoShowPreviewToSide": true,
   "markdown.preview.breaks": true,
   "markdown.extension.toc.orderedList": true,
   "markdown.extension.toc.levels": "2..6",
@@ -262,34 +261,29 @@
   "chat.viewWelcome.enabled": false,
   "chat.viewSessions.enabled": true,
   "chat.checkpoints.enabled": true,
+  "chat.mcp.gallery.enabled": true,
+  "chat.useClaudeMdFile": false,
+  "chat.useNestedAgentsMdFiles": false,
+  "chat.useCustomizationsInParentRepositories": false,
+  "github.copilot.chat.agentDebugLog.fileLogging.enabled": true,
+  "github.copilot.chat.summarizeAgentConversationHistory.enabled": true,
+  "github.copilot.chat.commitMessageGeneration.instructions": [
+    { "text": "Conventional commits。1行72字以内。本文は不要。" }
+  ],
   "github.copilot.enable": {
     "plaintext": false,
-    "log": false,
-    "markdown": false
+    "log": false
   },
   "github.copilot.chat.localeOverride": "ja",
   "github.copilot.nextEditSuggestions.enabled": true,
   "github.copilot.chat.agent.autoFix": true,
   "github.copilot.chat.codeGeneration.useInstructionFiles": true,
-  // Live Server
-  "liveServer.settings.donotShowInfoMsg": true,
-  // Code Runner
-  "code-runner.runInTerminal": true,
-  "code-runner.showRunIconInEditorTitleMenu": false,
-  "code-runner.executorMap": {
-    "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt.out && ./$fileNameWithoutExt.out",
-    "cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt.out && ./$fileNameWithoutExt.out"
-  },
-  "code-runner.executorMapByFileExtension": {
-    "gnuplot": "cd $dir && gnuplot $fileName"
-  },
   // Error Lens
   "errorLens.gutterIconsEnabled": true,
   "errorLens.enabledDiagnosticLevels": [
     "error",
     "warning"
   ],
-  // Spell Checker
   "clangd.path": "c:\\Users\\kensh\\AppData\\Roaming\\Code\\User\\globalStorage\\llvm-vs-code-extensions.vscode-clangd\\install\\20.1.8\\clangd_20.1.8\\bin\\clangd.exe",
   "cSpell.enabledSchemes": {
     "comment": true,
@@ -335,6 +329,18 @@
   "bookmarks.sideBar.hideWelcome": true,
   "bookmarks.showNoMoreBookmarksWarning": false,
   "bookmarks.sideBar.expanded": true,
+  // Live Server
+  "liveServer.settings.donotShowInfoMsg": true,
+  // Code Runner
+  "code-runner.runInTerminal": true,
+  "code-runner.showRunIconInEditorTitleMenu": false,
+  "code-runner.executorMap": {
+    "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt.out && ./$fileNameWithoutExt.out",
+    "cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt.out && ./$fileNameWithoutExt.out"
+  },
+  "code-runner.executorMapByFileExtension": {
+    "gnuplot": "cd $dir && gnuplot $fileName"
+  },
   // LaTeX Workshop
   "latex-workshop.latex.tools": [
     {
