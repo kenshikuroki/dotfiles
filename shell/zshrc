@@ -32,7 +32,7 @@ setopt auto_pushd # cdコマンドでディレクトリをスタックに追加
 setopt pushd_ignore_dups # pushdコマンドの重複を無視
 setopt pushd_silent # pushdコマンドの出力を抑制
 setopt auto_param_keys # カッコなどを補完
-setopt correct_all # typoを検出
+#setopt correct_all # typoを検出
 setopt extended_history # historyにタイムスタンプも記録する
 setopt hist_ignore_dups # historyの連続を削除
 setopt hist_save_no_dups # historyの重複を保存しない
@@ -103,12 +103,12 @@ FAST_HIGHLIGHTING_DIR="$ZSH_PLUGIN_DIR/fast-syntax-highlighting"
 source "$FAST_HIGHLIGHTING_DIR/fast-syntax-highlighting.plugin.zsh"
 
 # print-alias
-PRINT_ALIAS_DIR="$ZSH_PLUGIN_DIR/print-alias"
-source "$PRINT_ALIAS_DIR/print-alias.plugin.zsh"
-export PRINT_ALIAS_PREFIX=$'\e[1;32m  ╰─> \e[0m'
-export PRINT_ALIAS_FORMAT=$'\e[32m'
-export PRINT_NON_ALIAS_FORMAT=$'\e[0m'
-export PRINT_ALIAS_IGNORE_REDEFINED_COMMANDS=false
+#PRINT_ALIAS_DIR="$ZSH_PLUGIN_DIR/print-alias"
+#source "$PRINT_ALIAS_DIR/print-alias.plugin.zsh"
+#export PRINT_ALIAS_PREFIX=$'\e[1;32m  ╰─> \e[0m'
+#export PRINT_ALIAS_FORMAT=$'\e[32m'
+#export PRINT_NON_ALIAS_FORMAT=$'\e[0m'
+#export PRINT_ALIAS_IGNORE_REDEFINED_COMMANDS=false
 
 # dirhistory plugin (Oh My Zsh)
 DIRHISTORY_PLUGIN_DIR="$ZSH_PLUGIN_DIR/dirhistory"
