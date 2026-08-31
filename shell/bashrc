@@ -51,7 +51,7 @@ export FZF_DEFAULT_OPTS="--exit-0 --height 50% --border --preview-window=right:5
   --color 'input-border:#996666,input-label:#ffcccc' \
   --color 'list-border:#669966,list-label:#99cc99,header:#99cc99' \
   --color 'preview-border:#9999cc,preview-label:#ccccff'"
-export FZF_ALT_C_OPTS="--preview 'eza -T -L 1 --icons --color=always {}'"
+export FZF_ALT_C_OPTS="--preview 'eza -T -L 1 --icons always --color=always {}'"
 export FZF_COMPLETION_OPTS='--border=none --style=minimal --info=hidden'
 eval "$(fzf --bash)"
 
@@ -151,7 +151,7 @@ alias .5='cd ../../../../..'
 function fcd() {
   local query="${1:-}"
   local selected
-  selected=$(fd -t d --follow -I --exclude .git . $HOME | fzf --reverse --preview 'eza -T -L 1 --icons --color=always {}' -q "$query")
+  selected=$(fd -t d --follow -I --exclude .git . $HOME | fzf --reverse --preview 'eza -T -L 1 --icons always --color=always {}' -q "$query")
   if [ -n "$selected" ]; then
     echo -e "\033[32m❯\033[0m cd $selected"
     cd "$selected" || return 1
@@ -161,7 +161,7 @@ function fcd() {
 eval "$(zoxide init bash)"
 function zi_1() {
   local selected
-  selected=$(zoxide query -l | fzf --reverse --preview "eza -T -L 1 --icons --color=always {}")
+  selected=$(zoxide query -l | fzf --reverse --preview "eza -T -L 1 --icons always --color=always {}")
   if [ -n "$selected" ]; then
     echo -e "\033[32m❯\033[0m cd $selected"
     cd "$selected" || return 1
@@ -202,7 +202,7 @@ alias mv='mv -i'
 alias cp='cp -i'
 alias mkdir='mkdir -pv'
 
-alias eza='eza --git --time-style long-iso --no-user --icons'
+alias eza='eza --git --time-style long-iso --no-user --icons always'
 alias ls='eza'
 alias la='eza -a'
 alias ll='eza -lh'
